@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tic Tac Toe Game</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    
+<div class="container">
+
+    <div class="btn-wrapper">
+        <div class="click-btn" id="div1"></div>
+        <div class="click-btn" id="div2"></div>
+        <div class="click-btn" id="div3"></div>
+        <div class="click-btn" id="div4"></div>
+        <div class="click-btn" id="div5"></div>
+        <div class="click-btn" id="div6"></div>
+        <div class="click-btn" id="div7"></div>
+        <div class="click-btn" id="div8"></div>
+        <div class="click-btn" id="div9"></div>
+    </div>
+
+</div>
+
+
+
+
+
+    <script>
+        let currentTurn = '0';
+        let clickBtn = document.querySelectorAll('.click-btn');
+        console.log(clickBtn);
+
+        clickBtn.forEach(function(btn, index){
+            btn.addEventListener("click", function(){
+                currentTurn == "0"?currentTurn = "X":currentTurn = "0";
+                let playTurn = document.getElementById(`div${index+1}`).innerHTML;
+
+                if(playTurn == ""){
+                    document.getElementById(`div${index+1}`).innerHTML = currentTurn;
+                }
+
+            });
+
+
+        });
+
+        
+
+
+
+
+        clickBtn[0]
+    </script>
+</body>
+</html>
