@@ -11,15 +11,20 @@
 <div class="container">
 
     <div class="btn-wrapper">
-        <div class="click-btn" id="div1"></div>
-        <div class="click-btn" id="div2"></div>
-        <div class="click-btn" id="div3"></div>
-        <div class="click-btn" id="div4"></div>
-        <div class="click-btn" id="div5"></div>
-        <div class="click-btn" id="div6"></div>
-        <div class="click-btn" id="div7"></div>
-        <div class="click-btn" id="div8"></div>
-        <div class="click-btn" id="div9"></div>
+        <div class="click-btn" id="div1" name="0"></div>
+        <div class="click-btn" id="div2" name="1"></div>
+        <div class="click-btn" id="div3" name="2"></div>
+        <div class="click-btn" id="div4" name="3"></div>
+        <div class="click-btn" id="div5" name="4"></div>
+        <div class="click-btn" id="div6" name="5"></div>
+        <div class="click-btn" id="div7" name="6"></div>
+        <div class="click-btn" id="div8" name="7"></div>
+        <div class="click-btn" id="div9" name="8"></div>
+    </div>
+
+    <div class="reset-btn">
+        <button type="button" id="resetBtn">Reset</button>
+
     </div>
 
 </div>
@@ -29,9 +34,31 @@
 
 
     <script>
+        const selectionsX = [];
+        const selections0 = []
+
         let currentTurn = '0';
         let clickBtn = document.querySelectorAll('.click-btn');
         console.log(clickBtn);
+        let divs = document.querySelector(".btn-wrapper").children;
+        function checkWinner(){
+                const winningCombos = [
+                [0,3,6],[1,4,7],[2,5,8],
+                [0,1,2],[3,4,5],[6,7,8],
+                [0,4,8],[2,4,6]
+                ]
+
+
+                for(combo of winningCombos){
+                    let [a,b,c] = combo;
+                    if(divs[a].innerHTML===divs[b].innerHTML && divs[b].innerHTML === divs[c].innerHTML && divs[c].innerHTML === divs[a].innerHTML){
+                        console.log('HERE');
+                        return true;
+                    }
+                    return false;
+                }
+
+            }
 
         clickBtn.forEach(function(btn, index){
             btn.addEventListener("click", function(){
@@ -42,20 +69,22 @@
                     document.getElementById(`div${index+1}`).innerHTML = currentTurn;
                 }
 
-                // switch(currentTurn <= 9){
-                //     case currentTurn%3 == 0:
-                //     document.getElementById(`div${index+1}`).innerHTML = "0";
-                //     break;
-
-
+                // if(checkWinner()){
+                //     alert("YAYA");
+                // }
+                // else{
+                //     cont
                 // }
 
-
+                const a  = checkWinner()
+                console.log(a)
             });
-
-
         });
+        // let resetBtn = document.getElementById("resetBtn");
 
+        // resetBtn.addEventListener("click", function(){
+        //     location.reload();
+        // });
         
 
 

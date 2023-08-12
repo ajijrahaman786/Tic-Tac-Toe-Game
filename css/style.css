@@ -24,3 +24,18 @@ body{
     font-size: 60px;
     font-weight: bolder;
 }
+
+.reset-btn{
+    padding-top: 1rem;
+    margin: auto;
+    display: table;
+}
+
+.reset-btn button{
+    font-size: 20px;
+    font-weight: 500;
+    background-color: rgb(255, 219, 255);
+    padding: 7px 25px;
+    border: 1px solid #000;
+    cursor: pointer;
+}
