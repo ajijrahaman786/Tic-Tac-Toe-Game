@@ -35,6 +35,10 @@ img.wins-img {
     cursor: pointer;
     font-size: 60px;
     font-weight: bolder;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+    display: flex;
 }
 
 .reset-btn{
