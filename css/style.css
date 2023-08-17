@@ -1,11 +1,23 @@
 body{
     background-color: antiquewhite;
-
+    font-family: sans-serif;
 }
 
 .container{
     max-width: 550px;
     margin: auto;
+}
+
+h3.wins{
+    text-align: center;
+    font-size: 1.3rem;
+    color: green;
+}
+
+img.wins-img {
+    width: 20%;
+    margin: auto;
+    display: block;
 }
 
 .btn-wrapper{
