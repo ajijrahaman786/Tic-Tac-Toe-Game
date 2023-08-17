@@ -34,12 +34,37 @@
 
 
     <script>
-        const selectionsX = [];
-        const selections0 = []
+
+        // get in in the boxes and adding the event
 
         let currentTurn = '0';
+        let flag=false;
         let clickBtn = document.querySelectorAll('.click-btn');
         console.log(clickBtn);
+        clickBtn.forEach(function(btn, index){
+            btn.addEventListener("click", function(){
+                currentTurn == "0"?currentTurn = "X":currentTurn = "0";
+
+                if(flag){
+                    return;
+                }
+
+                if(btn.innerHTML == ""){
+                    btn.innerHTML = currentTurn;
+                }
+
+                if(checkWinner()){
+                    alert("YAYA");
+                    flag=true;
+                }
+
+            });
+        });
+
+
+
+        // checking X or 0 are same line
+
         let divs = document.querySelector(".btn-wrapper").children;
         function checkWinner(){
                 const winningCombos = [
@@ -49,42 +74,28 @@
                 ]
 
 
-                for(combo of winningCombos){
-                    let [a,b,c] = combo;
-                    if(divs[a].innerHTML===divs[b].innerHTML && divs[b].innerHTML === divs[c].innerHTML && divs[c].innerHTML === divs[a].innerHTML){
-                        console.log('HERE');
-                        return true;
+                for(let i=0;i<winningCombos.length;i++){
+
+                    let [a,b,c]=winningCombos[i];
+
+                    if((divs[a].innerHTML && divs[b].innerHTML && divs[c].innerHTML) && (divs[a].innerHTML==divs[b].innerHTML && divs[a].innerHTML == divs[c].innerHTML)){
+
+                       return true;
                     }
-                    return false;
                 }
+                return false;
 
             }
 
-        clickBtn.forEach(function(btn, index){
-            btn.addEventListener("click", function(){
-                currentTurn == "0"?currentTurn = "X":currentTurn = "0";
-                let playTurn = document.getElementById(`div${index+1}`).innerHTML;
 
-                if(playTurn == ""){
-                    document.getElementById(`div${index+1}`).innerHTML = currentTurn;
-                }
 
-                // if(checkWinner()){
-                //     alert("YAYA");
-                // }
-                // else{
-                //     cont
-                // }
+        // reset button
 
-                const a  = checkWinner()
-                console.log(a)
-            });
+        let resetBtn = document.getElementById("resetBtn");
+
+        resetBtn.addEventListener("click", function(){
+            location.reload();
         });
-        // let resetBtn = document.getElementById("resetBtn");
-
-        // resetBtn.addEventListener("click", function(){
-        //     location.reload();
-        // });
         
 
 
